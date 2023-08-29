@@ -43,7 +43,7 @@ test.describe ('test suit',() => {
   await page.locator('#target div').nth(1).click();
   await page.getByPlaceholder('Search For Patient (Name, Code, Phone Number)').fill('00128095ALX');
   await page.getByPlaceholder('Search For Patient (Name, Code, Phone Number)').press('Enter');
-  await page.pause();
+  //await page.pause();
   //await page.locator('.col-md-6').first().click();
   //await page.locator('.col-md-4').click();
   //await page.getByRole('link').nth(1).click();
