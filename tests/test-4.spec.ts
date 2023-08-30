@@ -15,40 +15,29 @@ test.describe ('test suit',() => {
     await expect (page).toHaveURL(/.*dashboard/);
     //await page.pause()
 
-//go to Portal Successfully
-   // await page.locator('[class="hide-scroll"]').click();
-    await page.goto('http://dev-testing.andalusiagroup.net:5003/physicianDesktop');
-  
-    //should can Capture patient
-
- // await page.locator('[class="bg-grey-lt btn capture-btn p-0 rounded-lg"]').click();
-  //await page.locator('').fill('00128095ALX');
-  
-  await page.getByRole('link').nth(1).click();
-  await page.getByRole('link', { name: 'portal Portal' }).click();
-  // await page.locator('#target div').nth(1).click();
-  // await page.getByPlaceholder('Search For Patient (Name, Code, Phone Number)').fill('00128095ALX');
-  // await page.getByPlaceholder('Search For Patient (Name, Code, Phone Number)').press('Enter');
-  // page.setDefaultTimeout(350000);
-  // const gridRows:any = await page.$$('#PatientList .k-grid-content tr')
-  // console.log(gridRows.length)
-  // if(gridRows.length > 0){
-  //   await gridRows[0].$$('td').click()
-  // }
-
-  // //await page.locator('#PatientList .k-grid-content tr td').first().click();
-  // await page.getByRole('button', { name: 'Capture Patient' }).click();
-
-
+    //SHould go to Portal
+    //should capture patient
+   // test('Capture  patient',()=> {})
   await page.locator('#target div').nth(1).click();
   await page.getByPlaceholder('Search For Patient (Name, Code, Phone Number)').fill('00128095ALX');
   await page.getByPlaceholder('Search For Patient (Name, Code, Phone Number)').press('Enter');
-  //await page.pause();
-  //await page.locator('.col-md-6').first().click();
-  //await page.locator('.col-md-4').click();
-  //await page.getByRole('link').nth(1).click();
-  //await page.getByRole('link', { name: 'portal Portal' }).click();
-  //await page.getByRole('button', { name: 'Capture Patient' }).click();
+  await page.locator('.col-md-6').first().click();
+  await page.locator('.col-md-4').click();
+  await page.getByRole('link').nth(1).click();
+  await page.getByRole('link', { name: 'portal Portal' }).click();
+  await page.getByRole('button', { name: 'Capture Patient' }).click();
+
+
+  //should go to patient problem
+ await page.getByText('patient problems').click();
+//await page.locator('button',@class="menu-name">Patient Problem');
+ //should can add diagnosis
+  await page.locator('[class="btn btn-txt-blue"]').click();
+  await page.getByPlaceholder('Search Diagnosis').click();
+  await page.getByPlaceholder('Search Diagnosis').fill('00.0');
+  await page.getByText('A00 - Cholera').click();
+  await page.getByRole('button', { name: 'Save' }).click();
+
 
 
 
@@ -58,12 +47,5 @@ test.describe ('test suit',() => {
   
 
   
-  //should go to Patient Problems
   
-  
-  //should can add diagnosis
-  
-  
-  //should Send service
-
-})
+});
