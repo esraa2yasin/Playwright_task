@@ -34,12 +34,39 @@ test.describe ('test suit',() => {
  //should can add diagnosis
   await page.locator('[class="btn btn-txt-blue"]').click();
   await page.getByPlaceholder('Search Diagnosis').click();
-  await page.getByPlaceholder('Search Diagnosis').fill('00.0');
-  await page.getByText('A00 - Cholera').click();
+  await page.getByPlaceholder('Search Diagnosis').fill('00.0')
+  await page.keyboard.press('Enter');
+  //await page.waitForSelector('td',{timeout:5000});
+ // await page.locator('#DiseaseGridId')
+ const disease=page.locator('#DiseaseGridId tr:nth-child(1) .diagnosisItem');
+// await disease.hover();
+  await disease.click();
   await page.getByRole('button', { name: 'Save' }).click();
+ 
+  //Add the same diagnosis 
+  await page.locator('[class="btn btn-txt-blue"]').click();
+  await page.getByPlaceholder('Search Diagnosis').click();
+  await page.getByPlaceholder('Search Diagnosis').fill('00.0')
+  await page.keyboard.press('Enter');
+  const disease=page.locator('#DiseaseGridId tr:nth-child(1) .diagnosisItem');
+  await disease.click();
+  await page.getByRole('button', { name: 'Save' }).click();
+  await expect(page).toHaveTitle("Already exist", {timeout:8000});
 
 
+  //Delete Diagnosis then Add Again.
 
+  await page.locator('#DiseaseGridId tr:nth-child(1) .diagnosisItem');
+  await page.locator('[Class="k-link k-menu-link"]').click();
+  await page.getByRole('button', { name: 'yes' }).click();
+  await expect(page).toHaveTitle("Deleted successfully", {timeout:8000});
+  await page.locator('[class="btn btn-txt-blue"]').click();
+  await page.getByPlaceholder('Search Diagnosis').click();
+  await page.getByPlaceholder('Search Diagnosis').fill('00.0')
+  await page.keyboard.press('Enter');
+  const disease=page.locator('#DiseaseGridId tr:nth-child(1) .diagnosisItem');
+  await disease.click();
+  await page.getByRole('button', { name: 'Save' }).click();
 
 
 
